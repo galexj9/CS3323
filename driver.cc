@@ -6,8 +6,7 @@
 extern
 int yylex ();
 
-int main ()
-{
+int main () {
   int next;
   while ((next = yylex ()) != T_EOF) {
     printf ("token = %d\n", next);

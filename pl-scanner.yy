@@ -28,42 +28,35 @@ ALPHA [a-zA-Z]
 
 %%
 
-
-
-
-
 \/\/.*$   
 [ \t]+						
 [\n]+							
 
+";"  {return ';';}
+
+"="  {return OP_ASSIGN;}
+"+" {return OP_ADD;}
+"-" {return OP_SUB;}
+"*" {return OP_MUL;}
+"/" {return OP_DIV;}
+"<" {return OP_LT;}
+">" {return OP_GT;}
+"<=" {return OP_LEQ;}
+">=" {return OP_GEQ;}
+"==" {return OP_EQ;}
+"~=" {return OP_DIFF;}
+"++" {return OP_PLUSPLUS;}
+"+=" {return OP_ADDINC;}
 
 
-";"							  { 
-										return ';'; 
-                  }
+"MAIN" {return K_MAIN;}
 
-"="							  { 
-										return OP_ASSIGN; 
-                  }
+{DIGIT}+ {return L_INTEGER;}
 
-"MAIN"					{ 
-										return K_MAIN; 
-                  }
+"[@][a-z][a-z0-9_]" {return T_ID;}
 
+<<EOF>>	{ return T_EOF ; }
 
-{DIGIT}+					{ 
-										return L_INTEGER;
-									}
-
-{ALPHA}+        { 
-									return T_ID;
-							  }
-
-<<EOF>>						{ return T_EOF ; }
-.									{ printf ("Unexpected character\n"); exit (1); }
-
-
-
-
+.	{ printf("Unexpected character\n"); exit (1); }
 
 %%
