@@ -51,9 +51,24 @@ ALPHA [a-zA-Z]
 
 "MAIN" {return K_MAIN;}
 
+[@][a-z][a-zA-Z0-9_]+ {return T_ID;}
+
+[+|-]?{DIGIT}+.{DIGIT}+	{return L_FLOAT;}
+
 {DIGIT}+ {return L_INTEGER;}
 
-"[@][a-z][a-z0-9_]" {return T_ID;}
+"INTEGER" {return K_INTEGER;}
+"FLOAT" {return K_FLOAT;}
+"FOREACH" {return K_FOREACH;}
+"BEGIN" {return K_BEGIN;}
+"END" {return K_END;}
+"REPEAT" {return K_REPEAT;}
+"UNTIL" {return K_UNTIL;}
+"WHILE" {return K_WHILE;}
+"DECLARE" {return K_DECLARE;}
+"IF" {return K_IF;}
+"THEN" {return K_THEN;}
+"PRINT" {return K_PRINT;}
 
 <<EOF>>	{ return T_EOF ; }
 
